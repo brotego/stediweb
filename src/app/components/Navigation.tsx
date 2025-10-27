@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useState, useEffect } from "react";
 
 export default function Navigation() {
@@ -54,7 +55,7 @@ export default function Navigation() {
     >
       {/* Left - Logo */}
       <div className="flex items-end">
-        <a href="/" style={{ mixBlendMode: 'difference', filter: 'invert(0)' }}>
+        <Link href="/" style={{ mixBlendMode: 'difference', filter: 'invert(0)' }}>
           <Image
             src={isScrolled ? "/logos/stedilogodouble.svg" : "/logos/stedilogofinal.svg"}
             alt="Stedi Logo"
@@ -66,7 +67,7 @@ export default function Navigation() {
               transition: 'all 0.3s ease-in-out'
             }}
           />
-        </a>
+        </Link>
       </div>
 
       {/* Center - Location and Time */}
@@ -76,17 +77,17 @@ export default function Navigation() {
 
       {/* Right - Navigation Links */}
       <div className="flex items-end">
-        <a href="/shop" className="text-lg font-normal text-white hover:underline transition-all">
+        <Link href="/shop" className="text-lg font-normal text-white hover:underline transition-all">
           Catalog
-        </a>
+        </Link>
         <span className="text-lg font-normal text-white">,&nbsp;</span>
-        <a href="/about" className="text-lg font-normal text-white hover:underline transition-all">
+        <Link href="/about" className="text-lg font-normal text-white hover:underline transition-all">
           About
-        </a>
+        </Link>
         <span className="text-lg font-normal text-white">,&nbsp;</span>
-        <a href="/contact" className="text-lg font-normal text-white hover:underline transition-all">
+        <Link href="/contact" className="text-lg font-normal text-white hover:underline transition-all">
           Contact
-        </a>
+        </Link>
       </div>
     </nav>
   );

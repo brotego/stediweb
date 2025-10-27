@@ -15,7 +15,7 @@ export default function ContactPage() {
               Get in Touch
             </h1>
             <p className="text-lg text-black mb-8" style={{ fontFamily: 'MonumentGrotesk-Regular, sans-serif' }}>
-              If you're a college or university looking for better supplier turnaround times and modern accessories for your campus store, we'd love to discuss how we can help. Please fill out the form below and we will be in touch.
+              If you&apos;re a college or university looking for better supplier turnaround times and modern accessories for your campus store, we&apos;d love to discuss how we can help. Please fill out the form below and we will be in touch.
             </p>
             <div className="space-y-4">
               <div>
