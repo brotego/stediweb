@@ -41,7 +41,7 @@ export default function AboutPage() {
                 fontFamily: 'MonumentGrotesk-Regular, sans-serif'
               }}
             >
-              We&apos;re revolutionizing university accessory supply chains with modern solutions and unprecedented turnaround times.
+              Modernizing the college merchandise industry with faster, smarter, and better-looking products.
             </p>
           </div>
         </div>
@@ -56,10 +56,10 @@ export default function AboutPage() {
                 Our Mission
               </h2>
               <p className="text-lg text-gray-700 mb-6" style={{ fontFamily: 'MonumentGrotesk-Regular, sans-serif' }}>
-                Stedi Supply was founded to solve a critical problem in higher education: the frustratingly long wait times for campus store accessories. We believe that universities shouldn&apos;t have to wait months for quality, branded merchandise.
+                Stedi Supply was founded to modernize the college merchandise industry. We focus on creating modern, high-quality products that reflect each school&apos;s identity — while solving the slow, outdated systems behind how those products are made and delivered.
               </p>
               <p className="text-lg text-gray-700" style={{ fontFamily: 'MonumentGrotesk-Regular, sans-serif' }}>
-                Our mission is to provide modern, high-quality accessories with dramatically reduced turnaround times, allowing universities to keep their campus stores stocked with fresh, relevant merchandise year-round.
+                By working directly with trusted manufacturers and streamlining production, we shorten turnaround times and ensure consistent, reliable supply for every campus partner. Our process uses data and predictive planning to deliver the right quantities at the right time, keeping shelves stocked and students engaged.
               </p>
             </div>
             <div className="flex justify-center">
@@ -138,16 +138,13 @@ export default function AboutPage() {
             </div>
             <div>
               <h2 className="text-4xl font-bold text-gray-900 mb-8" style={{ fontFamily: 'MonumentGrotesk-Regular, sans-serif' }}>
-                Our Story
+                Our Approach
               </h2>
               <p className="text-lg text-gray-700 mb-6" style={{ fontFamily: 'MonumentGrotesk-Regular, sans-serif' }}>
-                Founded in Boston, Massachusetts, Stedi Supply emerged from firsthand experience with the challenges universities face in maintaining well-stocked campus stores. We saw the frustration of students and administrators alike when popular items were out of stock for months.
-              </p>
-              <p className="text-lg text-gray-700 mb-6" style={{ fontFamily: 'MonumentGrotesk-Regular, sans-serif' }}>
-                Our team combines deep knowledge of university operations with modern supply chain expertise to deliver solutions that actually work for higher education institutions.
+                From custom MagSafe wallets to new lines of campus essentials, Stedi Supply builds modern products backed by modern operations — bringing colleges faster, smarter, and better-looking merchandise.
               </p>
               <p className="text-lg text-gray-700" style={{ fontFamily: 'MonumentGrotesk-Regular, sans-serif' }}>
-                Today, we&apos;re proud to serve universities and colleges across the United States, helping them provide better experiences for their students and communities.
+                Our streamlined approach eliminates the traditional bottlenecks in college merchandise production, ensuring that every campus partner receives products that truly represent their school&apos;s identity while meeting the demands of today&apos;s students.
               </p>
             </div>
           </div>
