@@ -1,180 +1,145 @@
 "use client";
 
-import Image from "next/image";
+import { useState, useEffect } from "react";
 
 export default function AboutPage() {
+  const [scrollY, setScrollY] = useState(0);
+  const [activeValue, setActiveValue] = useState(0);
+
+  const values = [
+    {
+      title: "Modern",
+      description: "We design contemporary products that bring a new standard to college merchandise. Every item we make balances practical use with modern aesthetics, ensuring each campus product feels current and thoughtfully made."
+    },
+    {
+      title: "Reliable",
+      description: "Our supply model is built around consistency. By managing production directly with our manufacturers, we ensure every order arrives on time and to spec — keeping campus stores stocked and dependable year-round."
+    },
+    {
+      title: "Efficient",
+      description: "Speed matters. We streamline every step of the process — from order to delivery — reducing turnaround times and optimizing batch production so each campus partner receives exactly what they need, when they need it."
+    },
+    {
+      title: "Collaborative",
+      description: "We work closely with colleges and student teams to bring their ideas to life. From product customization to restock planning, every partnership is built on transparency, communication, and shared goals."
+    }
+  ];
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white overflow-x-hidden">
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
         {/* Animated Square Background */}
         <div className="absolute inset-0">
+          {/* One Big Square */}
           <div 
             className="absolute w-96 h-96 bg-black"
             style={{
-              left: '50%',
-              top: '50%',
-              transform: 'translate(-50%, -50%)',
+              left: `${150 + (scrollY * 0.3)}px`,
+              top: `${250 + (scrollY * -0.2)}px`,
             }}
           />
         </div>
         
         {/* Content */}
         <div className="absolute inset-0 flex items-center justify-center">
-          <div className="max-w-4xl px-4 text-center">
+          <div className="max-w-6xl px-4 w-full">
             <h1 
-              className="font-bold leading-tight mb-8"
+              className="font-bold leading-tight mb-8 text-left"
               style={{
                 fontSize: '4.5rem',
                 color: 'white',
                 mixBlendMode: 'difference',
-                fontFamily: 'MonumentGrotesk-Regular, sans-serif'
               }}
             >
-              About Stedi Supply
+              Modern Products. Smarter Supply.
             </h1>
             <p 
-              className="text-xl leading-relaxed"
+              className="text-xl leading-relaxed max-w-2xl ml-auto text-right"
               style={{
                 color: 'white',
                 mixBlendMode: 'difference',
                 fontFamily: 'MonumentGrotesk-Regular, sans-serif'
               }}
             >
-              Modernizing the college merchandise industry with faster, smarter, and better-looking products.
+              Stedi Supply partners with colleges to modernize campus merchandise — building better products, faster operations, and reliable delivery for every store.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Mission Section */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <h2 className="text-4xl font-bold text-gray-900 mb-8" style={{ fontFamily: 'MonumentGrotesk-Regular, sans-serif' }}>
-                Our Mission
-              </h2>
-              <p className="text-lg text-gray-700 mb-6" style={{ fontFamily: 'MonumentGrotesk-Regular, sans-serif' }}>
-                Stedi Supply was founded to modernize the college merchandise industry. We focus on creating modern, high-quality products that reflect each school&apos;s identity — while solving the slow, outdated systems behind how those products are made and delivered.
-              </p>
-              <p className="text-lg text-gray-700" style={{ fontFamily: 'MonumentGrotesk-Regular, sans-serif' }}>
-                By working directly with trusted manufacturers and streamlining production, we shorten turnaround times and ensure consistent, reliable supply for every campus partner. Our process uses data and predictive planning to deliver the right quantities at the right time, keeping shelves stocked and students engaged.
-              </p>
-            </div>
-            <div className="flex justify-center">
-              <div className="w-96 h-96 bg-gray-100 rounded-lg flex items-center justify-center">
-                <span className="text-gray-500 text-lg" style={{ fontFamily: 'MonumentGrotesk-Regular, sans-serif' }}>
-                  Mission Image Placeholder
-                </span>
+      {/* Interactive Values Section */}
+      <section 
+        className="py-20 min-h-screen transition-colors duration-300" 
+        style={{ backgroundColor: activeValue < 2 ? '#000000' : '#ffffff' }}
+      >
+        <div className="max-w-7xl mx-auto px-4 h-full">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 h-full" style={{ gridTemplateColumns: '1fr 1fr' }}>
+            {/* Left Column - Values List */}
+            <div className="flex flex-col justify-center -ml-16">
+                <h2 
+                  className="text-3xl mb-12" 
+                  style={{ 
+                    fontFamily: 'MonumentGrotesk-Regular, sans-serif',
+                    color: activeValue < 2 ? '#ffffff' : '#000000'
+                  }}
+                >
+                  Our values
+                </h2>
+              <div className="space-y-8">
+                {values.map((value, index) => (
+                  <div
+                    key={index}
+                    className="flex items-center cursor-pointer group"
+                    onMouseEnter={() => setActiveValue(index)}
+                  >
+                    <span 
+                      className="text-8xl font-thin transition-all duration-300"
+                      style={{ 
+                        fontFamily: 'MonumentGrotesk-Regular, sans-serif',
+                        color: activeValue === index 
+                          ? (activeValue < 2 ? '#ffffff' : '#000000')
+                          : (activeValue < 2 ? '#6b7280' : '#9ca3af')
+                      }}
+                    >
+                      {value.title}
+                    </span>
+                    <span 
+                      className="text-sm ml-4"
+                      style={{
+                        color: activeValue < 2 ? '#9ca3af' : '#6b7280'
+                      }}
+                    >
+                      {String(index + 1).padStart(2, '0')}
+                    </span>
+                  </div>
+                ))}
               </div>
             </div>
-          </div>
-        </div>
-      </section>
 
-      {/* Values Section */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4" style={{ fontFamily: 'MonumentGrotesk-Regular, sans-serif' }}>
-              Our Values
-            </h2>
-            <p className="text-lg text-gray-600" style={{ fontFamily: 'MonumentGrotesk-Regular, sans-serif' }}>
-              The principles that guide everything we do
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-black rounded-full flex items-center justify-center mx-auto mb-6">
-                <span className="text-white text-2xl font-bold">⚡</span>
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4" style={{ fontFamily: 'MonumentGrotesk-Regular, sans-serif' }}>
-                Speed
-              </h3>
-              <p className="text-gray-600" style={{ fontFamily: 'MonumentGrotesk-Regular, sans-serif' }}>
-                We deliver products faster than traditional suppliers, ensuring your campus store never runs out of popular items.
-              </p>
-            </div>
-            
-            <div className="text-center">
-              <div className="w-16 h-16 bg-black rounded-full flex items-center justify-center mx-auto mb-6">
-                <span className="text-white text-2xl font-bold">🎯</span>
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4" style={{ fontFamily: 'MonumentGrotesk-Regular, sans-serif' }}>
-                Quality
-              </h3>
-              <p className="text-gray-600" style={{ fontFamily: 'MonumentGrotesk-Regular, sans-serif' }}>
-                Every product meets our high standards for durability, design, and student appeal.
-              </p>
-            </div>
-            
-            <div className="text-center">
-              <div className="w-16 h-16 bg-black rounded-full flex items-center justify-center mx-auto mb-6">
-                <span className="text-white text-2xl font-bold">🤝</span>
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4" style={{ fontFamily: 'MonumentGrotesk-Regular, sans-serif' }}>
-                Partnership
-              </h3>
-              <p className="text-gray-600" style={{ fontFamily: 'MonumentGrotesk-Regular, sans-serif' }}>
-                We work closely with universities to understand their unique needs and provide tailored solutions.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Story Section */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div className="flex justify-center">
-              <div className="w-96 h-96 bg-gray-100 rounded-lg flex items-center justify-center">
-                <span className="text-gray-500 text-lg" style={{ fontFamily: 'MonumentGrotesk-Regular, sans-serif' }}>
-                  Story Image Placeholder
-                </span>
+            {/* Right Column - Description */}
+            <div className="flex items-center">
+              <div className="max-w-2xl">
+                <p 
+                  className="text-3xl leading-relaxed"
+                  style={{ 
+                    fontFamily: 'MonumentGrotesk-Regular, sans-serif',
+                    color: activeValue < 2 ? '#ffffff' : '#000000'
+                  }}
+                >
+                  {values[activeValue].description}
+                </p>
               </div>
             </div>
-            <div>
-              <h2 className="text-4xl font-bold text-gray-900 mb-8" style={{ fontFamily: 'MonumentGrotesk-Regular, sans-serif' }}>
-                Our Approach
-              </h2>
-              <p className="text-lg text-gray-700 mb-6" style={{ fontFamily: 'MonumentGrotesk-Regular, sans-serif' }}>
-                From custom MagSafe wallets to new lines of campus essentials, Stedi Supply builds modern products backed by modern operations — bringing colleges faster, smarter, and better-looking merchandise.
-              </p>
-              <p className="text-lg text-gray-700" style={{ fontFamily: 'MonumentGrotesk-Regular, sans-serif' }}>
-                Our streamlined approach eliminates the traditional bottlenecks in college merchandise production, ensuring that every campus partner receives products that truly represent their school&apos;s identity while meeting the demands of today&apos;s students.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-20 bg-black">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-4xl font-bold text-white mb-8" style={{ fontFamily: 'MonumentGrotesk-Regular, sans-serif' }}>
-            Ready to Transform Your Campus Store?
-          </h2>
-          <p className="text-xl text-gray-300 mb-8" style={{ fontFamily: 'MonumentGrotesk-Regular, sans-serif' }}>
-            Join the universities already experiencing faster turnaround times and happier students.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a 
-              href="/contact" 
-              className="bg-white text-black px-8 py-4 font-semibold hover:bg-gray-100 transition-colors text-lg"
-              style={{ fontFamily: 'MonumentGrotesk-Regular, sans-serif' }}
-            >
-              Get Started
-            </a>
-            <a 
-              href="/shop" 
-              className="border border-white text-white px-8 py-4 font-semibold hover:bg-white hover:text-black transition-colors text-lg"
-              style={{ fontFamily: 'MonumentGrotesk-Regular, sans-serif' }}
-            >
-              View Products
-            </a>
           </div>
         </div>
       </section>
